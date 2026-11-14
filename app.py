@@ -4,6 +4,10 @@ import csv
 
 app = Flask(__name__)
 
+@app.route("/")
+def homepage():
+    return render_template("index.html")
+
 PASTA_DADOS = Path('dados')
 
 def salvar_ponto(nome, endereco, residuo, detalhe, cep, contato):
@@ -38,3 +42,6 @@ def cadastro():
         salvar_ponto(nome, endereco, residuo, detalhe, cep, contato)
         return redirect(url_for('cadastro'))
     return render_template('cadastro.html')
+
+if __name__ == "__main__":
+    app.run(debug=True)
