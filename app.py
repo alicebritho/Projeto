@@ -1,9 +1,12 @@
 from flask import Flask, render_template, request, url_for, redirect, flash
 from pathlib import Path
 import csv
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = 'chave-secreta'
+app.secret_key = os.environ.get('SECRET_KEY')
 
 PASTA_DADOS = Path('dados')
 
