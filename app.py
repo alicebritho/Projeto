@@ -6,6 +6,20 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
+
+@app.route("/")
+def homepage():
+    return render_template("index.html")
+
+@app.route("/cadastro-usuario")
+def cadastro_usuario():
+    return render_template("cadastro-usuario.html")
+
+@app.route("/login")
+def login():
+    return render_template("login.html")
+
+
 app.secret_key = os.environ.get('SECRET_KEY')
 
 PASTA_DADOS = Path('dados')
@@ -46,8 +60,8 @@ def ler_pontos():
         return list(csv.DictReader(arquivo))
 
 
-@app.route('/cadastro', methods=['GET', 'POST'])
-def cadastro():
+@app.route('/cadastro-ponto', methods=['GET', 'POST'])
+def cadastro_ponto():
     if request.method == 'POST':
         nome = request.form.get('nome')
         endereco = request.form.get('endereco')
@@ -63,7 +77,7 @@ def cadastro():
         salvar_ponto(nome, endereco, residuo, detalhe, cep, contato)
         flash('Ponto de coleta cadastrado com sucesso!')
         return redirect(url_for('cadastro'))
-    return render_template('cadastro.html')
+    return render_template('cadastro-ponto.html')
 
 @app.route('/editar/<int:id>', methods=['GET', 'POST'])
 def editar(id):
@@ -115,3 +129,6 @@ def atualizar_ponto(id, nome, endereco, residuo, detalhe, cep, contato):
         escritor = csv.DictWriter(arquivo, fieldnames=campos)
         escritor.writeheader()
         escritor.writerows(pontos)
+
+if __name__ == "__main__":
+    app.run(debug=True)
