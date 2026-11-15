@@ -1,3 +1,26 @@
+.btn-editar {
+    background-color: transparent;
+    color: #2563eb;
+    border: 2px solid #2563eb;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 10px;
+    transition: 0.3s;
+}
+
+.btn-editar {
+    background-color: #eff6ff;
+}
+
+.btn-editar:hover {
+    background-color: #eff6ff;
+
+}
+
+.btn-editar:active {
+    transform: scale(0.96);
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 *{
