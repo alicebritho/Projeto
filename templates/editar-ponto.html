@@ -1,4 +1,15 @@
+{% extends "base.html" %}
+
+{% block CSS_outra_pagina %}
+<link rel="stylesheet" href="/static/css/editar-ponto.css">
+{% endblock %}
+
+{% block main %}
+
+<button class="btn-editar" type="button">Editar</button>
+
 <!--placeholder para testar backend de edicao-->
+
 <form action="/editar/{{ ponto.id }}" method="POST">
     <input name="nome" value="{{ ponto.nome }}">
     <input name="endereco" value="{{ ponto.endereco }}">
@@ -8,6 +19,8 @@
     <input name="contato" value="{{ ponto.contato }}">
     <button type="submit">Salvar alterações</button>
 </form>
+
+{% endblock %}
 
 {% with mensagens = get_flashed_messages(with_categories=true) %}
   {% if mensagens %}
