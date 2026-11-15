@@ -1,0 +1,18 @@
+<!--placeholder para testar backend de edicao-->
+<form action="/editar/{{ ponto.id }}" method="POST">
+    <input name="nome" value="{{ ponto.nome }}">
+    <input name="endereco" value="{{ ponto.endereco }}">
+    <input name="residuo" value="{{ ponto.residuo }}">
+    <input name="detalhe" value="{{ ponto.detalhe }}">
+    <input name="cep" value="{{ ponto.cep }}">
+    <input name="contato" value="{{ ponto.contato }}">
+    <button type="submit">Salvar alterações</button>
+</form>
+
+{% with mensagens = get_flashed_messages(with_categories=true) %}
+  {% if mensagens %}
+    {% for categoria, texto in mensagens %}
+      <p class="{{ categoria }}">{{ texto }}</p>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
