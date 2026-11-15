@@ -19,6 +19,18 @@ def cadastro_usuario():
 def login():
     return render_template("login.html")
 
+@app.route("/mapa")
+def mapa():
+    return render_template("mapa.html")
+
+@app.route("/duvidas")
+def duvidas():
+    return render_template("duvidas.html")
+
+@app.route("/configuracoes")
+def configuracoes():
+    return render_template("configuracoes.html")
+
 
 app.secret_key = os.environ.get('SECRET_KEY')
 
