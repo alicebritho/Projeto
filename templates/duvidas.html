@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block CSS_outra_pagina %}
+<link rel="stylesheet" href="/static/css/duvidas.css">
+{% endblock %}
+
+
+{% block main %}
+
+<main class="main-duvidas">
+
+<!-- Tabela com perguntas frequentes-->
+
+<h1>Dúvidas e contato</h1>
+
+<div class="container-duvidas">
+
+<section class="duvidas">
+    <h2>Dúvidas frequentes</h2>
+    <table class="tabela">
+        <thead>
+            <tr>
+            <th scope="col">Perguntas</th>
+            <th scope="col">Respostas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Pergunta 1</th>
+                <td>Resposta 1</td>
+            </tr>
+            <tr>
+                <th scope="row">Pergunta 2</th>
+                <td>Resposta 2</td>
+            </tr>
+            <tr>
+                <th scope="row">Pergunta 3</th>
+                <td>Resposta 3</td>
+            </tr>
+        </tbody>
+    </table>
+
+</section>
+
+<!--Formulário de contato-->
+
+<section class="mensagem">
+
+<h2>Contate-nos</h2>
+
+<p>Sua dúvida não está nas mais frequentes? Entre em contato conosco.</p>
+
+<form class="form-duvidas" action="">
+
+    <div class="campo-forms">
+
+    <label for="">Seu nome</label>
+    <input class="campo-duvidas" type="text" placeholder="Digite seu nome..." required>
+
+    </div>
+
+    <div class="campo-forms">
+
+    <label for="">E-mail</label>
+    <input class="campo-duvidas" type="email" placeholder="seuemail@gmail.com" required>
+
+    </div>
+
+    <div class="campo-forms">
+
+    <label class="label-mapa" for="">Assunto</label>
+    <select class="campo-duvidas" name="" id="" required>
+        <option value="">Selecione...</option>
+        <option value="">Opção 1</option>
+        <option value="">Opção 2</option>
+        <option value="">Outro...</option>
+    </select>
+
+    </div>
+    
+    <div class="campo-forms">
+
+    <label for="">Mensagem</label>
+    <textarea class="campo-duvidas" name="" id="" rows="5" placeholder="Digite sua mensagem..." required></textarea>
+
+    </div>
+
+    <button class="btn-enviar-duvida" type="submit">Enviar</button>
+
+</form>
+</section>
+</div>
+</main>
+
+{% endblock %}
