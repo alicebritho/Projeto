@@ -1,23 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% block main %}
 
-    <h1>Arquivo para o formulário de login do usuário</h1>
+{% with mensagens = get_flashed_messages(with_categories=true) %}
+  {% if mensagens %}
+    {% for categoria, texto in mensagens %}
+      <p class="{{ categoria }}">{{ texto }}</p>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
 
-    <form action="{{ url_for('login')}}" method="POST">
-        <label for="usuario">nome usuario</label>
-        <input type="text" id="usuario" name="usuario" required>
-        <label for="senha">senha</label>
-        <input type="password" id="senha" name="senha" required>
+{% block main %}
+    <main class="main-login">
+      <h1>Entre na sua conta</h1>
 
-        <button type="submit">entra</button>
+      <form class="form-login" action="{{ url_for('login')}}" method="POST">
+          <label for="usuario">nome usuario</label>
+          <input class="campo-login" type="text" id="usuario" name="usuario" required>
+          <label for="senha">senha</label>
+          <input class="campo-login" type="password" id="senha" name="senha" required>
 
-    </form>
-    
-</body>
+          <button class="btn-login" type="submit">entrar</button>
+
+      </form>
+    </main>
+{% end block %}    
+
 </html>
