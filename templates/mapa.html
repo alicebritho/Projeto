@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block CSS_outra_pagina %}
+<link rel="stylesheet" href="/static/css/mapa.css">
+{% endblock %}
+
+
+{% block main %}
+
+<main class="main-mapa">
+
+<h1>Pontos de coleta</h1>
+
+<div class="container-mapa">
+
+<div class="listagem-ponto">
+    <label class="campo-ponto" for="">Escolha um ponto</label><br>
+    <select name="" id="">
+        <option value="">Selecione...</option>
+        <option value="">Ponto 1</option>
+        <option value="">Ponto 2</option>
+        <option value="">Ponto 3</option>
+    </select>
+
+    <!--Inserir aqui o html do botao cadastrar ponto-->
+
+</div>
+
+<div class="mapa">
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126682.34272588447!2d-34.96400042181038!3d-7.14643119625942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ace839019aa3d7%3A0x6e414a9c6d26db34!2sJo%C3%A3o%20Pessoa%2C%20PB!5e0!3m2!1spt-BR!2sbr!4v1794715818503!5m2!1spt-BR!2sbr" 
+          style="border:0;" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+</div>
+
+</div>
+
+</main>
+
+{% endblock %}

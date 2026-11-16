@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'Inter';
+}
+
+h1{
+    font-size: 2rem;
+}
+
+h2{
+    font-size: 1.5rem;
+}
+
+.main-duvidas{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem;
+    gap: .5rem;
+}
+
+.mensagem{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    border: 1px solid #000;
+    padding: 1rem;
+    border-radius: 15px;
+    align-items: center;
+    justify-content: center;
+    gap: .8rem;
+}
+
+.duvidas{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .8rem;
+}
+
+.tabela{
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    border-collapse: collapse;
+}
+
+.tabela th, .tabela td{
+    border: 1px solid #000;
+    padding: .3rem;
+    text-align: left;
+}
+
+input{
+    border: 1px solid #000;
+}
+
+.mensagem p{
+    font-size: .9rem;
+    text-align: left;
+}
+
+.btn-enviar-duvida{
+    border-radius: 30px;
+    width: 40%;
+    padding: .5rem;
+    border: none;
+    background-color: #1f612b;
+    color: #fff;
+}
+
+.campo-duvidas{
+    width: 100%;
+    border-radius: 15px;
+    padding: .4rem;
+}
+
+.campo-forms{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: .5rem;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.form-duvidas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: .6rem;
+}
+
+.container-duvidas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 1.5rem;
+}
+
+details[open]{
+    margin: 0;
+}
+
+@media(min-width: 700px){
+
+.container-duvidas{
+    width: 60%;
+    gap: 1.5rem;
+}
+
+.campo-duvidas{
+    padding: .7rem;
+}
+
+.btn-enviar-duvida{
+    padding: .7rem;
+}
+
+.mensagem p{
+    font-size: 1rem;
+}
+}
+
+@media(min-width: 1024px){
+
+.container-duvidas{
+    width: 50%;
+    gap: 1.5rem;
+}
+
+.campo-duvidas{
+    padding: .8rem;
+}
+
+.btn-enviar-duvida{
+    padding: .7rem;
+}
+
+.mensagem p{
+    font-size: 1.2rem;
+}
+
+h1{
+    font-size: 2.2rem;
+}
+
+h2{
+    font-size: 1.8rem;
+}
+
+.tabela {
+    font-size: 1.2rem;
+}
+}
