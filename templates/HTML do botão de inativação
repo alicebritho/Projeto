@@ -1,0 +1,7 @@
+<head>
+    <link rel="stylesheet" href="botao_inatividade.css">
+</head>
+
+<body>
+    <button type="button" class="btn-inativar">Inativar</button>
+</body>
