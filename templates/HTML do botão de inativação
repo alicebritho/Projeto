@@ -3,5 +3,5 @@
 </head>
 
 <body>
-    <button type="button" class="btn-inativar">Inativar</button>
+    <button type="button" class="btn-inativar">Desativar</button>
 </body>
