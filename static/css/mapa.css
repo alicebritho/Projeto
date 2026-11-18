@@ -53,6 +53,21 @@
     font-size: .8rem;
     }
 
+.botao-cadastrar-ponto{
+    background-color: #3D994E;
+    color: #fff;
+    padding: .5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: .85rem;
+    text-align: center;
+    transition: background-color .3s;
+}
+
+.botao-cadastrar-ponto:hover{
+    background-color: #2F7A3D;
+}
+
 @media (min-width: 700px){
 
     .listagem-ponto{
@@ -72,7 +87,11 @@
     .campo-ponto{
         font-size: 1.2rem;
     }
-
+    
+    .botao-cadastrar-ponto{
+        font-size: 1rem;
+    }
+    
     #opcao{
         font-size: .8rem;
     }
@@ -90,6 +109,10 @@
     }
     .campo-ponto{
         font-size: 1.4rem;
+    }
+
+    .botao-cadastrar-ponto{
+        font-size: 1.1rem;
     }
 
     #opcao{
