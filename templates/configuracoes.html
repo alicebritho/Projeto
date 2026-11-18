@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block CSS_outra_pagina %}
+<link rel="stylesheet" href="/static/css/configuracoes.css">
+{% endblock %}
+
+{% block main %}
+
+<main class="pag-config">
+
+<h1>Configurações</h1>
+
+<div class="container-config">
+
+    <details>
+        <summary>Editar perfil</summary>
+        <ul>
+        <li><a class="links" href="">Alterar foto de perfil</a></li>
+        <li><a class="links" href="">Alterar nome de exibição</a></li>
+        <li><a class="links" href="">Alterar nome de usuário</a></li>
+        </ul>
+    </details>
+
+    <details>
+    <summary>Privacidade e segurança</summary>
+        <ul>
+        <li><a class="links" href="">Alterar e-mail</a></li>
+        <li><a class="links" href="">Alterar senha</a></li>
+        </ul>
+    </details>
+
+    <details>
+        <summary>Tamanho da fonte</summary>
+        <select name="" id="">
+            <option value="">Pequena</option>
+            <option value="">Normal</option>
+            <option value="">Grande</option>
+        </select>
+    </details>
+    
+    <a class="links" href="">
+        <i class="fa-solid fa-right-from-bracket"></i>
+    <span>Encerrar sessão</span>
+    </a>
+    
+</div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block main %}
+
+{% with mensagens = get_flashed_messages(with_categories=true) %}
+  {% if mensagens %}
+    {% for categoria, texto in mensagens %}
+      <p class="{{ categoria }}">{{ texto }}</p>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+{% block main %}
+    <main class="main-login">
+      <h1>Entre na sua conta</h1>
+
+      <form class="form-login" action="{{ url_for('login')}}" method="POST">
+          <label for="usuario">nome usuario</label>
+          <input class="campo-login" type="text" id="usuario" name="usuario" required>
+          <label for="senha">senha</label>
+          <input class="campo-login" type="password" id="senha" name="senha" required>
+
+          <button class="btn-login" type="submit">entrar</button>
+
+      </form>
+    </main>
+{% end block %}    
+
+</html>

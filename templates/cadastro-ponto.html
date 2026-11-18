@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block CSS_outra_pagina %}
+<!--Insira aqui o CSS da página-->
+{% endblock %}
+
+{% block main %}
+
+<main>
+
+<div class="container">
+<form action="/cadastro" method="POST">
+
+    <h1>Cadastro de ponto de coleta</h1>
+
+    <label class="campo" for="">Título do seu ponto</label><br>
+    <input class="dados" name="nome" placeholder="Digite seu título..." required><br>
+
+    <label class="campo" for="">Endereço do seu ponto</label><br>
+    <input class="dados" name="endereco" placeholder="Digite o endereço do ponto..." required><br>
+
+    <label class="campo" for="">Tipo de resíduo que coleta</label><br>
+    <input class="dados" name="residuo" placeholder="Digite o tipo de resíduo que coleta..." required><br>
+
+    <label class="campo" for="">CEP do ponto</label><br>
+    <input class="dados" name="cep" placeholder="XXXXX-XXX" type="number" maxlength="9" required><br>
+
+    <label class="campo" for="">Telefone para contato</label><br>
+    <input class="dados" name="contato" placeholder="XXXX-XXXX" type="number" maxlength="9" required><br>
+
+    <label class="campo" for="">Observações sobre o ponto(regras, horarios, etc)</label><br>
+    <textarea rows="5" class="dados" name="detalhe" placeholder="Digite uma observação..." required></textarea><br><br>
+
+    <button class="btn-enviar" type="submit">Enviar</button>
+
+</form>
+</div>
+</main>
+
+{% with mensagens = get_flashed_messages(with_categories=true) %}
+  {% if mensagens %}
+    {% for categoria, texto in mensagens %}
+      <p class="{{ categoria }}">{{ texto }}</p>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+{% endblock %}

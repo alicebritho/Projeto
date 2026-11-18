@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block main %}
+
+<h1>Criar conta</h1>
+
+{% with mensagens = get_flashed_messages(with_categories=true) %}
+    {% if mensagens %}
+    <ul class="mensagens">
+        {% for categoria, mensagem in mensagens %}
+        <li class="mensagem {{ categoria }}">{{ mensagem }}</li>
+        {% endfor %}
+    </ul>    
+    {% endif %}
+{% endwith %}    
+
+    <form action="{{url_for('cadastro_usuario')}}" method="POST">
+        <div>       
+            <label for="nome">Nome completo</label>
+            <input type="text" id="nome" name="nome" required>        
+        </div>    
+
+        <div>
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <div>
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" required>
+        </div>
+
+        <div>
+            <label for="confirmar_senha">Confirmar senha</label>
+            <input type="password" id="confirmar_senha" name="confirmar_senha" required>
+        </div>
+
+        <div> 
+            <label for="tipo_perfil">Tipo de conta</label>
+            <select id="tipo_perfil" name="perfil" required>
+                <option value="">Selecione</option>
+                <option value="avaliador">Avaliador</option>
+                <option value="administrador">Administrador de ponto de coleta</option>
+            </select>
+        </div>
+
+        <button type="submit">Cadastrar</button>
+    </form>
+
+{% endblock %}    

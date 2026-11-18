@@ -1,0 +1,76 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.pag-config{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 10px;
+}
+
+details ul{
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 1rem;
+}
+
+details li a, select{
+    display: block;
+    padding: .1rem 0;
+    font-size: .9rem;
+}
+
+details select{
+    margin: .4rem 0 0 1rem;
+}
+
+.container-config{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 85%;
+    border: 1px solid #000;
+    border-radius: 25px;
+    padding: 1.5rem;
+    gap: .6rem;
+    font-size: 1rem;
+}
+
+.links{
+    text-decoration: none;
+    color: #000;
+}
+
+summary:hover{
+    cursor: pointer;
+}
+
+.links:hover{
+    color: blue;
+}
+
+@media(min-width: 700px){
+    .container-config{
+        width: 40%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .pag-config{
+        flex-direction: column;
+    }
+}
+
+@media(min-width: 1024px){
+    .container-config{
+        width: 3    0%;
+    }
+
+    summary, .links, select{
+        font-size: 1.1rem;
+    }
+}
