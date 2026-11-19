@@ -1,0 +1,30 @@
+from flask import Flask, request, session
+from werkzeug.security import check_password_hash
+
+app = Flask(__name__)
+
+usuarios = [
+    {
+        "id": 1,
+        "email": "usuario@gmail.com",
+        "senha": "senha_hash_armazenada"
+    }
+]
+
+@app.route("/login", methods = ["POST"])
+def login():
+    email = request.form.get("email")
+    senha = request.form.get("senha")
+
+    for usuario in usuarios:
+        if usuario["email"] == email:
+            if check_password(usuario["senha"], senha):
+                session["usuarios_id"] = usuario["id"] 
+                return redirect("/pagina-principal")
+
+        return "email ou senha incorretos", 401
+    @app.route("/logout")
+    def logout():
+        session.pop("usuario_id", None)
+        return redirect("/login")
+    
