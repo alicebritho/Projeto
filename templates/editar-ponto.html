@@ -10,6 +10,7 @@
 
 <!--placeholder para testar backend de edicao-->
 
+
 <form action="/editar/{{ ponto.id }}" method="POST">
     <input name="nome" value="{{ ponto.nome }}">
     <input name="endereco" value="{{ ponto.endereco }}">
@@ -17,6 +18,10 @@
     <input name="detalhe" value="{{ ponto.detalhe }}">
     <input name="cep" value="{{ ponto.cep }}">
     <input name="contato" value="{{ ponto.contato }}">
+      <label for="ativo">
+      <input type="checkbox" id="ativo" name="ativo" value="True">
+      Ponto ativo
+    </label>
     <button type="submit">Salvar alterações</button>
 </form>
 

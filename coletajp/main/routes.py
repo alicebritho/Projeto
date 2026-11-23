@@ -65,6 +65,7 @@ def login():
 @app.route('/cadastro-ponto', methods=['GET', 'POST'])
 def cadastro_ponto():
     if request.method == 'POST':
+        ativo = True
         nome = request.form.get('nome')
         endereco = request.form.get('endereco')
         residuo = request.form.get('residuo')
@@ -74,11 +75,11 @@ def cadastro_ponto():
 
         if not nome or not endereco or not residuo or not cep:
             flash('Preencha todos os campos obrigatórios.', 'erro')
-            return redirect(url_for('cadastro'))
+            return redirect(url_for('cadastro_ponto'))
         
-        models.salvar_ponto(nome, endereco, residuo, detalhe, cep, contato)
+        models.salvar_ponto(ativo, nome, endereco, residuo, detalhe, cep, contato)
         flash('Ponto de coleta cadastrado com sucesso!')
-        return redirect(url_for('cadastro'))
+        return redirect(url_for('cadastro_ponto'))
     return render_template('cadastro-ponto.html')
 
 @app.route('/editar/<int:id>', methods=['GET', 'POST'])
@@ -95,6 +96,7 @@ def editar(id):
         return 'Esse ponto de coleta não existe.', 404
 
     if request.method == 'POST':
+        ativo=request.form.get('ativo') == 'True'
         nome=request.form.get('nome')
         endereco=request.form.get('endereco')
         residuo=request.form.get('residuo')
@@ -106,8 +108,8 @@ def editar(id):
             flash('Preencha todos os campos obrigatórios.', 'erro')
             return redirect(url_for('editar', id=id))
 
-        models.atualizar_ponto(id, nome, endereco, residuo, detalhe, cep, contato)
+        models.atualizar_ponto(ativo, id, nome, endereco, residuo, detalhe, cep, contato)
         flash('Ponto de coleta atualizado com sucesso!', 'sucesso')
         return redirect(url_for('editar', id=id))
 
-    return render_template('editar.html', ponto=ponto_encontrado)
+    return render_template('editar-ponto.html', ponto=ponto_encontrado)

@@ -7,11 +7,11 @@ PASTA_DADOS = Path('dados')
 
 #cria o ponto
 
-def salvar_ponto(nome, endereco, residuo, detalhe, cep, contato):
+def salvar_ponto(ativo, nome, endereco, residuo, detalhe, cep, contato):
     PASTA_DADOS.mkdir(exist_ok=True)
     caminho = PASTA_DADOS / 'pontos.csv'
     novo = not caminho.exists()
-    campos = ['id', 'nome', 'endereco', 'residuo', 'detalhe', 'cep', 'contato']
+    campos = ['ativo', 'id', 'nome', 'endereco', 'residuo', 'detalhe', 'cep', 'contato']
 
     if novo:
         novo_id=1
@@ -26,6 +26,7 @@ def salvar_ponto(nome, endereco, residuo, detalhe, cep, contato):
             escritor.writeheader() 
 
         escritor.writerow({
+            'ativo': True,
             'id': novo_id,
             'nome': nome,
             'endereco': endereco,
@@ -42,17 +43,21 @@ def ler_pontos():
     if not caminho.exists:
         return[]
     with open(caminho, 'r', newline='', encoding='utf-8') as arquivo:
-        return list(csv.DictReader(arquivo))
+        pontos = list(csv.DictReader(arquivo))
+    for ponto in pontos:
+      ponto['ativo'] = ponto.get('ativo', 'True') == 'True'
+    return pontos
 
 #atualizar dados do ponto
 
-def atualizar_ponto(id, nome, endereco, residuo, detalhe, cep, contato):
+def atualizar_ponto(ativo, id, nome, endereco, residuo, detalhe, cep, contato):
     caminho = PASTA_DADOS / 'pontos.csv'
-    campos = ['id', 'nome', 'endereco', 'residuo', 'detalhe', 'cep', 'contato']
+    campos = ['ativo', 'id', 'nome', 'endereco', 'residuo', 'detalhe', 'cep', 'contato']
     pontos = ler_pontos()
 
     for ponto in pontos:
         if ponto['id'] == str(id):
+            ponto['ativo'] = ativo
             ponto['nome'] = nome
             ponto['endereco'] = endereco
             ponto['residuo'] = residuo
