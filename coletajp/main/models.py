@@ -7,11 +7,11 @@ PASTA_DADOS = Path('dados')
 
 #cria o ponto
 
-def salvar_ponto(ativo, nome, endereco, residuo, detalhe, cep, contato):
+def salvar_ponto(ativo, nome, endereco, residuo, detalhe, cep, contato, usuario_id):
     PASTA_DADOS.mkdir(exist_ok=True)
     caminho = PASTA_DADOS / 'pontos.csv'
     novo = not caminho.exists()
-    campos = ['ativo', 'id', 'nome', 'endereco', 'residuo', 'detalhe', 'cep', 'contato']
+    campos = ['ativo', 'id', 'nome', 'endereco', 'residuo', 'detalhe', 'cep', 'contato', 'usuario_id']
 
     if novo:
         novo_id=1
@@ -34,6 +34,7 @@ def salvar_ponto(ativo, nome, endereco, residuo, detalhe, cep, contato):
             'detalhe': detalhe,
             'cep': cep,
             'contato': contato,
+            'usuario_id': usuario_id
         })
 
 #leitura dos pontos
@@ -52,7 +53,7 @@ def ler_pontos():
 
 def atualizar_ponto(ativo, id, nome, endereco, residuo, detalhe, cep, contato):
     caminho = PASTA_DADOS / 'pontos.csv'
-    campos = ['ativo', 'id', 'nome', 'endereco', 'residuo', 'detalhe', 'cep', 'contato']
+    campos = ['ativo', 'id', 'nome', 'endereco', 'residuo', 'detalhe', 'cep', 'contato', 'usuario_id']
     pontos = ler_pontos()
 
     for ponto in pontos:
