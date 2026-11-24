@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+
+{% block CSS_outra_pagina %}
+<link rel="stylesheet" href="/static/css/login.css">
+{% endblock %}
+
 {% block main %}
 
 {% with mensagens = get_flashed_messages(with_categories=true) %}
