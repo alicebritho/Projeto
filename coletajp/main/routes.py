@@ -1,6 +1,6 @@
 #rotas do site
 
-from flask import render_template, url_for, request, redirect, flash
+from flask import render_template, url_for, request, redirect, flash, session
 from . import app, models
 import os
 
@@ -64,6 +64,9 @@ def login():
 
 @app.route('/cadastro-ponto', methods=['GET', 'POST'])
 def cadastro_ponto():
+    if 'usuario_id' not in session:
+        flash('Você precisa estar logado para cadastrar um ponto!')
+        return redirect(url_for('homepage'))
     if request.method == 'POST':
         ativo = True
         nome = request.form.get('nome')
@@ -72,18 +75,22 @@ def cadastro_ponto():
         detalhe = request.form.get('detalhe')
         cep = request.form.get('cep')
         contato = request.form.get('contato')
+        usuario_id = session['usuario_id']
 
         if not nome or not endereco or not residuo or not cep:
             flash('Preencha todos os campos obrigatórios.', 'erro')
             return redirect(url_for('cadastro_ponto'))
         
-        models.salvar_ponto(ativo, nome, endereco, residuo, detalhe, cep, contato)
+        models.salvar_ponto(ativo, nome, endereco, residuo, detalhe, cep, contato, usuario_id)
         flash('Ponto de coleta cadastrado com sucesso!')
         return redirect(url_for('cadastro_ponto'))
     return render_template('cadastro-ponto.html')
 
 @app.route('/editar/<int:id>', methods=['GET', 'POST'])
 def editar(id):
+    if 'usuario_id' not in session:
+        flash('Você precisa estar logado para editar um ponto!', 'erro')
+        return redirect(url_for('index'))
     pontos=models.ler_pontos()
 
     ponto_encontrado = None
@@ -94,6 +101,10 @@ def editar(id):
             break
     if ponto_encontrado is None:
         return 'Esse ponto de coleta não existe.', 404
+
+    if str(ponto_encontrado.get(usuario_id)) != str(session['usuario_id']):
+        flash('Você não tem permissão para editar esse ponto!', 'erro')
+        return redirect(url_for('index'))
 
     if request.method == 'POST':
         ativo=request.form.get('ativo') == 'True'
@@ -113,3 +124,4 @@ def editar(id):
         return redirect(url_for('editar', id=id))
 
     return render_template('editar-ponto.html', ponto=ponto_encontrado)
+
