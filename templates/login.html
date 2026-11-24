@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+
+{% block CSS_outra_pagina %}
+<link rel="stylesheet" href="/static/css/login.css">
+{% endblock %}
+
 {% block main %}
 
 {% with mensagens = get_flashed_messages(with_categories=true) %}
@@ -9,7 +14,6 @@
   {% endif %}
 {% endwith %}
 
-{% block main %}
     <main class="main-login">
       <h1>Entre na sua conta</h1>
 
@@ -23,6 +27,6 @@
 
       </form>
     </main>
-{% end block %}    
+{% endblock %}    
 
 </html>
