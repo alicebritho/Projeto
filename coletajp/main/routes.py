@@ -125,16 +125,3 @@ def editar(id):
 
     return render_template('editar-ponto.html', ponto=ponto_encontrado)
 
-# ROTAS TEMPORÁRIAS PARA TESTES --- ESPERO QUE EU NÃO ESQUEÇA DE APAGAR!!!
-
-@app.route('/teste-login/<usuario_id>')
-def teste_login(usuario_id):
-    session['usuario_id'] = usuario_id  
-    flash(f'Logado com sucesso como usuário {usuario_id}', 'sucesso')
-    return redirect(url_for('homepage'))
-
-@app.route('/teste-logout')
-def teste_logout():
-    session.pop('usuario_id', None)
-    flash('Sessão encerrada.', 'sucesso')
-    return redirect(url_for('homepage'))
